@@ -32,9 +32,7 @@ function replaceSafeLinkAnchorElement(e) {
     e.href = newDestination;
     let linkTextIsSafelink = isSafeLink(decodeURIComponent(e.innerText));
     if (linkTextIsSafelink) {
-        e.innerHTML = `${newDestination} (USL)`;
-    } else {
-        e.innerHTML = `${e.innerText} (USL)`;
+        e.innerHTML = newDestination;
     }
 }
 
@@ -58,14 +56,14 @@ const observeDOM = (function () {
             const mutationObserver = new MutationObserver(callback);
 
             // have the observer observe for changes in children
-            mutationObserver.observe(obj, {childList: true, subtree: true})
-            return mutationObserver
+            mutationObserver.observe(obj, {childList: true, subtree: true});
+            return mutationObserver;
         }
 
         // browser support fallback
         else if (window.addEventListener) {
-            obj.addEventListener('DOMNodeInserted', callback, false)
-            obj.addEventListener('DOMNodeRemoved', callback, false)
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
         }
     }
 })();
