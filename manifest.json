@@ -13,5 +13,10 @@
         "unsafelinks.js"
       ]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "unsafelinks@nicholasmy.com"
+    }
+  }
 }
